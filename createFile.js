@@ -2,55 +2,155 @@ const fs = require("fs");
 
 function createFile(readme) {
   fs.writeFile(
-    "./created-files/README.md",
+    "./created-readme/README.md",
     `
-  # ${readme.title}
+  ${
+    readme.title
+      ? `# ${readme.title}
+  
+  `
+      : ""
+  }
 
-  ![License](https://img.shields.io/badge/License-${readme.license}-blue.svg)
+  ${
+    readme.license
+      ? `![License](https://img.shields.io/badge/License-${readme.license}-blue.svg)
+      
+      `
+      : ""
+  }
 
-  ## Description
-
-  ${readme.description}
+  ${
+    readme.description
+      ? `## Description
+  
+      ${readme.description}
+      
+      `
+      : ""
+  }
 
   ## Table of Contents
 
-  - [Installation](#installation)
+  ${
+    readme.installation
+      ? `- [Installation](#Installation)
+  
+  `
+      : ""
+  }
 
-  - [Usage](#usage)
+  ${
+    readme.usage
+      ? `- [Usage](#Usage)
+  
+  `
+      : ""
+  }
 
-  - [Contributing](#Contributing)
+  ${
+    readme.contributing
+      ? `- [Contributing](#Contributing)
+  
+  `
+      : ""
+  }
 
-  - [Licence](#licence)
+  ${
+    readme.license
+      ? `- [License](#License)
+  
+  `
+      : ""
+  }
 
-  - [Tests](#Tests)
+  ${
+    readme.tests
+      ? `- [Tests](#Tests)
+  
+  `
+      : ""
+  }
 
-  - [Questions](#Questions)
+  ${
+    readme.github | readme.email
+      ? `- [Questions](#Questions)
+  
+  `
+      : ""
+  }
 
-  ## Installation
+  ${
+    readme.installation
+      ? `## Installation
+  
+      ${readme.installation}
+      
+      `
+      : ""
+  }
 
-  ${readme.installation}
+  ${
+    readme.usage
+      ? `## Usage
+  
+      ${readme.usage}
+      
+      `
+      : ""
+  }
 
-  ## Usage
+  ${
+    readme.contributing
+      ? `## Contributing
+  
+      ${readme.contributing}
+      
+      `
+      : ""
+  }
 
-  ${readme.usage}
+  ${
+    readme.license
+      ? `## License
+  
+      This application is covered under the following license: ${readme.license}.
+      
+      `
+      : ""
+  }
 
-  ## Contributing
+  ${
+    readme.tests
+      ? `## Tests
+  
+      ${readme.tests}
+      
+      `
+      : ""
+  }
 
-  ${readme.contributing}
+  ${
+    readme.github | readme.email
+      ? `## Questions
+  
+      `
+      : ""
+  }
 
-  ## License
+  ${
+    readme.github
+      ? `### [GitHub](https://github.com/${readme.github})
+  
+  `
+      : ""
+  }
 
-  This application is covered under the following license: ${readme.license}.
-
-  ## Tests
-
-  ${readme.tests}
-
-  ## Questions
-
-  ### [GitHub](https://github.com/${readme.github})
-
-  ### Email [${readme.email}](${readme.email}) with any additional questions.
+  ${
+    readme.email
+      ? `### Email [${readme.email}](${readme.email}) with any additional questions.`
+      : ""
+  }
   `,
     (err) => console.log(err)
   );
