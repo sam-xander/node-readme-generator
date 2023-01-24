@@ -4,18 +4,11 @@ function createFile(readme) {
   fs.writeFile(
     "./created-readme/README.md",
     `
-  ${
-    readme.title
-      ? `# ${readme.title}
-  
-  `
-      : ""
-  }
+  ${readme.title ? `# ${readme.title}` : ""}
 
   ${
     readme.license
       ? `![License](https://img.shields.io/badge/License-${readme.license}-blue.svg)
-      
       `
       : ""
   }
@@ -23,135 +16,69 @@ function createFile(readme) {
   ${
     readme.description
       ? `## Description
-  
-      ${readme.description}
-      
-      `
+  ${readme.description}`
       : ""
   }
+
+  ---
 
   ## Table of Contents
+  ${readme.installation ? `- [Installation](#installation)` : ""}
 
-  ${
-    readme.installation
-      ? `- [Installation](#Installation)
-  
-  `
-      : ""
-  }
+  ${readme.usage ? `- [Usage](#usage)` : ""}
 
-  ${
-    readme.usage
-      ? `- [Usage](#Usage)
-  
-  `
-      : ""
-  }
+  ${readme.contributing ? `- [Contributing](#contributing)` : ""}
 
-  ${
-    readme.contributing
-      ? `- [Contributing](#Contributing)
-  
-  `
-      : ""
-  }
+  ${readme.license ? `- [License](#license)` : ""}
 
-  ${
-    readme.license
-      ? `- [License](#License)
-  
-  `
-      : ""
-  }
+  ${readme.tests ? `- [Tests](#tests)` : ""}
 
-  ${
-    readme.tests
-      ? `- [Tests](#Tests)
-  
-  `
-      : ""
-  }
-
-  ${
-    readme.github | readme.email
-      ? `- [Questions](#Questions)
-  
-  `
-      : ""
-  }
+  ${readme.github | readme.email ? `- [Questions](#questions)` : ""}
 
   ${
     readme.installation
       ? `## Installation
-  
-      ${readme.installation}
-      
-      `
+  ${readme.installation}`
       : ""
   }
 
   ${
     readme.usage
       ? `## Usage
-  
-      ${readme.usage}
-      
-      `
+  ${readme.usage}`
       : ""
   }
 
   ${
     readme.contributing
       ? `## Contributing
-  
-      ${readme.contributing}
-      
-      `
+  ${readme.contributing}`
       : ""
   }
 
   ${
     readme.license
       ? `## License
-  
-      This application is covered under the following license: ${readme.license}.
-      
-      `
+  This application is covered under the following license: ${readme.license}.`
       : ""
   }
 
   ${
     readme.tests
       ? `## Tests
-  
-      ${readme.tests}
-      
-      `
+  ${readme.tests}`
       : ""
   }
 
-  ${
-    readme.github | readme.email
-      ? `## Questions
-  
-      `
-      : ""
-  }
+  ${readme.github || readme.email ? `## Questions` : ""}
 
-  ${
-    readme.github
-      ? `### [GitHub](https://github.com/${readme.github})
-  
-  `
-      : ""
-  }
+  ${readme.github ? `### [GitHub](https://github.com/${readme.github})` : ""}
 
   ${
     readme.email
       ? `### Email [${readme.email}](${readme.email}) with any additional questions.`
       : ""
-  }
-  `,
+  }`,
     (err) => console.log(err)
   );
 }
